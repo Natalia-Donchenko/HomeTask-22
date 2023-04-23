@@ -28,7 +28,8 @@ const TodoList = ({ todos, isDone, isImportant, setUpdate }) => {
                 item.isImportant ? "important" : ""}
               >
                 <div className="list-text">
-                  <span className="list-number">{index + 1 + "."}</span>
+                  <span className={item.isImportant ? "list-number-imp" : "list-number"}
+                    >{index + 1 + "."}</span>
                   {item.title.trim()}
                 </div>
               </div>

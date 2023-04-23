@@ -1,11 +1,5 @@
 const initialState = {
-  todos: [{
-    title: "Read book",
-    isDelete: false,
-    isImportant: false,
-    isDone: false,
-    id: 2123123,
-  }],
+  todos: [],
   editInput: false,
   taskUpdate: {},
   count: 0,

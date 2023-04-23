@@ -70,7 +70,7 @@ body {
         
         background-color: transparent;
         border-radius: 12px;
-         outline: none;
+        outline: none;
       }
 
     }
@@ -105,6 +105,8 @@ body {
 
           word-break: break-all;
           word-wrap: wrap;
+
+          transition: all 0.5s linear;
         }
 
         .active {
@@ -117,14 +119,28 @@ body {
         }
 
         .important {
-          color: rgb(33, 180, 168);
+          color: rgba(253, 143, 143, 0.788);
+
+          transition: all 0.5s linear;
         }
 
+        
         .list-number {
           display: flex;
           align-items: center;
 
           color: rgb(33, 180, 168);
+
+          transition: all 0.5s linear;
+        }
+
+        .list-number-imp {
+          display: flex;
+          align-items: center;
+
+          color: rgba(253, 143, 143, 0.788);
+
+          transition: all 0.5s linear;
         }
       }
 
@@ -150,6 +166,27 @@ body {
 
           &:hover {
             background-color:rgb(38, 206, 192);
+            cursor: pointer;
+          }
+        }
+
+        .imp-btn {
+          min-width: 60px;
+          padding: 5px;
+
+          background-color: rgba(253, 143, 143, 0.788);
+          border: none;
+          border-radius: 12px;
+
+          color: rgb(60, 63, 65);
+          font-weight: bolder;
+          font-size: 8px;
+          text-transform: uppercase;
+
+          transition: all 0.5s linear;
+
+          &:hover {
+            background-color:rgba(253, 143, 143, 0.986);
             cursor: pointer;
           }
         }

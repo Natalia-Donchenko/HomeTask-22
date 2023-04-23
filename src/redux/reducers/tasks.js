@@ -13,11 +13,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         todos: [...state.todos, {
+          id: Math.floor(Math.random() * 1000000),
           title: action.title,
           isDelete: false,
           isImportant: false,
           isDone: false,
-          id: Math.floor(Math.random() * 1000000)
         }],
         count: state.count + 1
       };

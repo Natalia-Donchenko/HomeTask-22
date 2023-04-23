@@ -5,9 +5,10 @@ const ImportantBtn = ({ isImportant, item }) => {
   const dispatch = useDispatch();
   
   return (
+    
     <button
       type="button"
-      className="optional-btn"
+      className={ item.isImportant ? "imp-btn" : "optional-btn"}
       onClick={() => dispatch(isImportant(item.id))}
     >
       Important
