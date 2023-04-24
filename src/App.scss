@@ -1,5 +1,22 @@
 body {
+  margin: 0;
+
   background-color: rgb(169, 175, 179);
+
+  .error {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: white;
+    
+    &-img {
+      margin: auto auto;
+      height: 50%;
+    }
+  }
+  
+  
 
   .container {
     margin: 50px auto;
@@ -71,6 +88,10 @@ body {
         background-color: transparent;
         border-radius: 12px;
         outline: none;
+      }
+
+      .h {
+        background-color: red;
       }
 
     }
@@ -193,4 +214,5 @@ body {
       }
     }
   }
+
 }

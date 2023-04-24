@@ -1,54 +1,39 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { isImportant, isDone, upDateTask } from './redux/reducers/tasks';
-import EditTask from './components/editTask';
-import AddTask from './components/addTask';
-import TodoList from './components/todoList';
+import {useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addTodo } from './store/todoSlice';
+import NewTodoForm from './components/NewTodoForm';
+import TodoList from './components/TodoList';
+import EditTodoForm from './components/EditTodoForm';
 
-function App () {
+function App() {
+  const [text, setText] = useState('');
+ 
+  const dispatch = useDispatch();
 
-  const todos = useSelector((store) => store.tasks.todos);
-
-  const editInput = useSelector((store) => store.tasks.editInput);
-
-  const updateTask = useSelector((store) => store.tasks.taskUpdate);
-
-  const [update, setUpdate] = useState(updateTask);
-
-  const [task, setTask] = useState('');
+  const handleAction = () => {
+    if(text.trim().length) {
+      dispatch(addTodo({text}));
+      setText('');
+    }
+  }
 
   return (
     <div className='container'>
       <h2 className='total-title'>My tasks</h2>
 
-      <div className="addTask">
-        {editInput && editInput ? (
-          <EditTask 
-            update = {update}
-            setUpdate = {setUpdate}
-            upDateTask = {upDateTask}
-            task = {task}
-          />
-        ) : (
-          <AddTask 
-            setTask = {setTask}
-            task = {task}
-          />
-        )}
-      </div>
+      {/* <EditTodoForm 
+        value={text} 
+      /> */}
+      
+      <NewTodoForm
+        value={text}
+        setText={setText}
+        handleAction={handleAction}
+      />
 
-      {todos && todos.length ? ( 
-        <TodoList 
-          todos = {todos}
-          isDone = {isDone}
-          isImportant = {isImportant}
-          setUpdate = {setUpdate}
-        />
-       ) : ( 
-        <div className='counter'>No Tasks</div>
-       )}   
+      <TodoList />
     </div>
-  )
+  );
 }
 
 export default App;
