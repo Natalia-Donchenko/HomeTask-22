@@ -17,7 +17,6 @@ body {
   }
   
   
-
   .container {
     margin: 50px auto;
     padding: 20px;
@@ -79,6 +78,7 @@ body {
       .task-input {
         padding: 5px 10px;
         width: 400px;
+        height: 32px;
         min-height: 30px;
         text-align: center;
         
@@ -91,8 +91,9 @@ body {
       }
 
       .h {
-        background-color: red;
+        background-color: rgba(33, 180, 168, 0.171);;
       }
+
 
     }
 
@@ -100,12 +101,14 @@ body {
       padding: 0;
 
       list-style: none;
+
       
       .list-item {
         display: flex;
         margin-bottom: 10px;
         padding: 5px 0;
-        justify-content: space-between;
+        gap: 10px;
+        // justify-content: space-between;
 
         color: rgb(169, 175, 179);
         font-size: 20px;
@@ -145,30 +148,19 @@ body {
           transition: all 0.5s linear;
         }
 
-        
-        .list-number {
-          display: flex;
-          align-items: center;
-
-          color: rgb(33, 180, 168);
-
-          transition: all 0.5s linear;
+        .btn-done {
+          display: none;
+          
         }
 
-        .list-number-imp {
-          display: flex;
-          align-items: center;
-
-          color: rgba(253, 143, 143, 0.788);
-
-          transition: all 0.5s linear;
-        }
       }
 
       .list-buttons {
         display: flex;
+        width: 195px;
         gap: 5px;
         align-items: center;
+        justify-content: flex-end;
 
         .optional-btn {
           min-width: 60px;

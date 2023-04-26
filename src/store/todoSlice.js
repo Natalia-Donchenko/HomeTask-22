@@ -1,39 +1,41 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const todoSlice = createSlice({
-    name: 'todos',
-    initialState: {
-        todos: [],
-        
+export const TodoSlider = createSlice({
+  name: 'todo',
+  initialState: {
+    todoList:   [],
+  },
+  reducers: {
+    addTodo: (state, action) => {
+      let newTodoList = {   
+        id: Math.round(Math.random() * 100000),
+        text: action.payload.newText,
+        edit: false,
+        done: false,
+        important: false,
+      }
+      state.todoList.push(newTodoList);
     },
-    reducers: {
-        addTodo(state, action) {
-            state.todos.push({
-              id: Math.floor(Math.random() * 1000000),
-              text: action.payload.text,
-              done: false,
-              important: false,
-              edit: false,
-            });
-        },
-        toggleComplete(state, action) {
-            const toggledTodo = state.todos.find(todo => todo.id === action.payload.id);
-            toggledTodo.done = !toggledTodo.done;
-        },
-        removeTodo(state, action) {
-            state.todos = state.todos.filter(todo => todo.id !== action.payload.id);
-        },
-        importantSelectTodo(state, action) {
-          const importantTodo = state.todos.find(todo => todo.id === action.payload.id)
-          importantTodo.important = !importantTodo.important
-        },
-        editTodo(state, action) {
-          const editingTodo = state.todos.find(todo => todo.id === action.payload.id)
-          editingTodo.edit = !editingTodo.edit
-        }
+    deleteTodo: (state, action) => {
+      let { todoList } = state;
+      state.todoList = todoList.filter((item) => item.id !== action.payload.id);
     },
+    editTodo: (state, action) => {
+      let { todoList } = state;
+      state.todoList = todoList.map((item) => item.id === action.payload.id ? action.payload : item);
+      state.todoList.edit = !state.todoList.edit;
+    },
+    isDoneTodo: (state, action) => {
+      const todo = state.todoList.find((item) => item.id === action.payload.id);
+      todo.done = !todo.done;
+    },
+    isImportant: (state, action) => {
+      const todo = state.todoList.find((item) => item.id === action.payload.id);
+      todo.important = !todo.important;
+    }
+  },
 });
 
-export const {addTodo, toggleComplete, removeTodo, importantSelectTodo, editTodo} = todoSlice.actions;
+export const { addTodo, deleteTodo, editTodo, isDoneTodo, isImportant } = TodoSlider.actions;
 
-export default todoSlice.reducer;
+export default TodoSlider.reducer;
